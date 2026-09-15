@@ -4,6 +4,8 @@ import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
+import { Text } from 'src/ui/text';
+import { Separator } from 'src/ui/separator';
 import {
 	fontFamilyOptions,
 	fontColors,
@@ -24,7 +26,6 @@ export const ArticleParamsForm = ({
 	setCurrentArticleState,
 }: ArticleParamsFormProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const [formState, setFormState] =
 		useState<ArticleStateType>(defaultArticleState);
 	const rootRef = useRef<HTMLDivElement>(null);
@@ -65,6 +66,10 @@ export const ArticleParamsForm = ({
 					className={styles.form}
 					onSubmit={handleSubmit}
 					onReset={handleReset}>
+					<Text as='h2' size={31} weight={800} uppercase>
+						Задайте параметры
+					</Text>
+
 					<Select
 						selected={formState.fontFamilyOption}
 						options={fontFamilyOptions}
@@ -92,6 +97,8 @@ export const ArticleParamsForm = ({
 							setFormState({ ...formState, fontColor: option })
 						}
 					/>
+
+					<Separator />
 
 					<Select
 						selected={formState.backgroundColor}
